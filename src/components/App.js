@@ -24,6 +24,13 @@ function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
+  function handleClearItemsList() {
+    const confirmedClearList = window.confirm(
+      "Are you sure you want to clear all items?"
+    );
+    if (confirmedClearList) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -32,6 +39,7 @@ function App() {
         items={items}
         onUpdateItem={handleUpdateItem}
         onDeleteItem={handleDeleteItem}
+        onClearItemsList={handleClearItemsList}
       />
       <Stats items={items} />
     </div>
