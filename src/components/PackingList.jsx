@@ -7,12 +7,12 @@ const initialItems = [
   { id: 2, description: "Socks", quantity: 12, packed: true },
 ];
 
-function PackingList() {
+function PackingList({ items, onUpdateItems }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
-          <Item item={item} key={item.id} />
+        {items.map((item) => (
+          <Item item={item} key={item.id} onCheckBoxClick={onUpdateItems} />
         ))}
       </ul>
       <div className="actions">
