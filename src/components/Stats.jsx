@@ -1,9 +1,17 @@
 import React from "react";
 
-function Stats() {
+function Stats({ items }) {
+  // Derived State
+  const itemsCount = items.length;
+  const packedItems = items.filter((item) => item.packed === true).length;
+  const finishedPercentage = Math.round(packedItems / itemsCount);
+
   return (
     <footer className="stats">
-      <em>🐉 You have X items on your list, and you already packed X (X%)</em>
+      <em>
+        🐉 You have {itemsCount} items on your list, and you already packed{" "}
+        {packedItems} ({finishedPercentage}%)
+      </em>
     </footer>
   );
 }

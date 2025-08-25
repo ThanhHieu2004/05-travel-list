@@ -8,7 +8,7 @@ function Form({ onAddItems }) {
     e.preventDefault();
 
     if (!description) return;
-    const newItem = { description, quantity, packed: false, id: Date().now };
+    const newItem = { description, quantity, packed: false, id: Date.now() };
     onAddItems(newItem);
     resetForm();
   }

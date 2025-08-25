@@ -2,8 +2,8 @@ import React from "react";
 
 function Item({ item, onToggleItem, onDeleteItem }) {
   function handleToggleItem(item) {
-    const newItem = { ...item, packed: !item.packed };
-    onToggleItem(item.id, newItem);
+    const updatedFields = { packed: !item.packed };
+    onToggleItem(item.id, updatedFields);
   }
 
   function handleDeleteItem(item) {
@@ -15,7 +15,11 @@ function Item({ item, onToggleItem, onDeleteItem }) {
 
   return (
     <li>
-      <input type="checkbox" onChange={() => handleToggleItem(item)} />
+      <input
+        type="checkbox"
+        checked={item.packed}
+        onChange={() => handleToggleItem(item)}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>

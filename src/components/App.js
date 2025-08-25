@@ -12,9 +12,11 @@ function App() {
     setItems([...items, item]);
   }
 
-  function handleUpdateItem(id, newItem) {
+  function handleUpdateItem(id, updatedFields) {
     setItems((items) =>
-      items.map((item) => (item.id === id ? (item = newItem) : item))
+      items.map((item) =>
+        item.id === id ? { ...item, ...updatedFields } : item
+      )
     );
   }
 
@@ -31,7 +33,7 @@ function App() {
         onUpdateItem={handleUpdateItem}
         onDeleteItem={handleDeleteItem}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
