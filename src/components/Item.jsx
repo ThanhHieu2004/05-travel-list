@@ -1,7 +1,10 @@
 import React from "react";
 
-function Item({ item, onCheckBoxClick, onDeleteItem }) {
-  function handleCheckBoxChange() {}
+function Item({ item, onToggleItem, onDeleteItem }) {
+  function handleToggleItem(item) {
+    const newItem = { ...item, packed: !item.packed };
+    onToggleItem(item.id, newItem);
+  }
 
   function handleDeleteItem(item) {
     const isConfirmedToDelete = window.confirm(
@@ -12,7 +15,7 @@ function Item({ item, onCheckBoxClick, onDeleteItem }) {
 
   return (
     <li>
-      <input type="checkbox" onChange={handleCheckBoxChange} />
+      <input type="checkbox" onChange={() => handleToggleItem(item)} />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>

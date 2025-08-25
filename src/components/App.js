@@ -12,8 +12,10 @@ function App() {
     setItems([...items, item]);
   }
 
-  function handleUpdateItems(newItem, id) {
-    items.map((item) => (item.id === id ? (item = newItem) : item));
+  function handleUpdateItem(id, newItem) {
+    setItems((items) =>
+      items.map((item) => (item.id === id ? (item = newItem) : item))
+    );
   }
 
   function handleDeleteItem(id) {
@@ -26,7 +28,7 @@ function App() {
       <Form onAddItems={handleAddItems} />
       <PackingList
         items={items}
-        onUpdateItem={handleUpdateItems}
+        onUpdateItem={handleUpdateItem}
         onDeleteItem={handleDeleteItem}
       />
       <Stats />
